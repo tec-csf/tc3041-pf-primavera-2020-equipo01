@@ -1,0 +1,68 @@
+<div class="container">
+  <h2 class="p-3">See Covid Cases</h2>
+  <button type="button" class="btn btn-primary" [routerLink]="[ '/cases/add']">Add case</button>
+  <button type="button" class="btn btn-info" (click)="openModal('unwind')" data-toggle="modal" data-target="#modal">
+    Unwind query
+  </button>
+  <button type="button" class="btn btn-info" (click)="openModal('geoNear')" data-toggle="modal" data-target="#modal">
+    geoNear query
+  </button>
+  <button type="button" class="btn btn-info" (click)="openModal('facet')" data-toggle="modal" data-target="#modal">
+    facet query
+  </button>
+  <button type="button" class="btn btn-info" (click)="openModal('graphLookup')" data-toggle="modal" data-target="#modal">
+    graphLookup query
+  </button>
+
+  <table class="table">
+    <p *ngIf="loading"> Loading...</p>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let case of cases | paginate: { itemsPerPage: 10, currentPage: p }">
+        <th scope="row">{{case._id}}</th>
+        <td>{{case.name}}</td>
+        <td>{{case.last_name}}</td>
+        <td>{{case.age}}</td>
+        <td>{{case.gender}}</td>
+        <td>{{case.isConfirmed}}</td>
+        <td>
+         <button type="button" class="btn btn-info" [routerLink]="[ '/cases/edit', case._id ]">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="delete(case._id)">Delete</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Queries result</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{json}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

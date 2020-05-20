@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="p-3">{{edit ? 'Edit' : 'Add'}} Business</h2>
+    
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="company">Company</label>
+            <input type="text"  placeholder="Company" class="form-control"  name="company" [(ngModel)]="business.company" required>
+          </div>
+          <div class="form-group col">
+            <label for="ywage">Wage</label>
+            <input type="number" class="form-control" placeholder="0" name="ywage" [(ngModel)]="business.ywage" required>
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col">
+              <label for="employeeSince">Since</label>
+              <input type="date" name="employeeSince" placeholder="0001-01-01" class="form-control"  [(ngModel)]="business.employeeSince" required>
+            </div>
+            <div class="form-group col">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" placeholder="+1 0010101010" class="form-control"  [(ngModel)]="business.phone" required>
+              </div>
+        </div>
+
+          <button type="submit" class="btn btn-primary" >Send</button>
+      </form>
+</div>

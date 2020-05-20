@@ -1,0 +1,21 @@
+<div class="container">
+    <h2 class="p-3">{{edit ? 'Edit' : 'Add'}} Location</h2>
+    
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="city">City</label>
+            <input type="text" placeholder="Arkham" class="form-control"  name="city" [(ngModel)]="location.city" required>
+          </div>
+          <div class="form-group col">
+            <label for="state">State</label>
+            <input type="text" class="form-control" placeholder="State" name="state" [(ngModel)]="location.state" required>
+          </div>
+        </div>
+        <div class="form-group col">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" placeholder="Country" name="country" [(ngModel)]="location.country" required>
+        </div>
+          <button type="submit" class="btn btn-primary" >Send</button>
+      </form>
+</div>
