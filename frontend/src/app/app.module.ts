@@ -19,6 +19,12 @@ import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { environment } from 'src/environments/environment';
+import { MapComponent } from './map/map.component';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormLocationsComponent,
     AllLocationsComponent,
     LoginComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,12 @@ import { ToastrModule } from 'ngx-toastr';
           return localStorage.getItem('id_token');
         }
       }
-    })
+    }),
+    //Google mpas
+    AgmCoreModule.forRoot({
+      apiKey: environment.maps
+    }),
+    AgmJsMarkerClustererModule
   ],
   providers: [
     AuthService,

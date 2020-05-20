@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8081/',
   auth: 'http://localhost:3000/',
+  maps : 'AIzaSyAjfsVYLl5-ub-xmXPRNQUmKt3nMOKZ1Pk',
   debugMode: false
 };
 

@@ -8,11 +8,13 @@ import { AllLocationsComponent } from './locations/all-locations/all-locations.c
 import { FormLocationsComponent } from './locations/form-locations/form-locations.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { MapComponent } from './map/map.component';
 
 
 const routes: Routes = [
   {path:  "", pathMatch:  "full",redirectTo:  "login"},
   {path: "login", component: LoginComponent},
+  {path: "map", component: MapComponent, canActivate: [AuthGuard] },
   {path: "cases", component: AllCasesComponent , canActivate: [AuthGuard] },
   {path: "cases/add", component: FormCasesComponent , canActivate: [AuthGuard] },
   {path: "cases/edit/:id", component: FormCasesComponent , canActivate: [AuthGuard] },

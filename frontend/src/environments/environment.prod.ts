@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   apiUrl: 'https://hwk1-adb.uc.r.appspot.com/',
-  auth: 'http://localhost:3000/'
+  auth: 'http://localhost:3000/',
+  maps : 'AIzaSyAjfsVYLl5-ub-xmXPRNQUmKt3nMOKZ1Pk',
 };
