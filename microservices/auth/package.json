@@ -1,30 +1,25 @@
 {
-  "name": "meanauthapp",
+  "name": "auth with redis",
   "version": "1.0.0",
-  "description": "MEAN stack authentication App",
+  "description": "Auth with redis microservice",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "dependencies": {
-    "@sendgrid/mail": "^6.3.1",
     "bcryptjs": "*",
     "body-parser": "*",
     "braces": "^3.0.2",
     "cors": "*",
     "express": "*",
     "express-handlebars": "^3.0.2",
-    "jsonwebtoken": "*",
     "method-override": "^3.0.0",
-    "mongoose": "*",
     "nodemon": "^1.18.10",
-    "passport": "*",
-    "passport-jwt": "*",
     "redis": "^2.8.0",
     "to": "^0.2.9",
     "update": "^0.7.4"
   },
-  "author": "Joan Andoni",
+  "author": "Daniel Charua",
   "license": "ISC"
 }
