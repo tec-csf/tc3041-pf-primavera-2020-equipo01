@@ -1,5 +1,5 @@
 {
-  "name": "auth with redis",
+  "name": "auth_with_redis",
   "version": "1.0.0",
   "description": "Auth with redis microservice",
   "main": "app.js",
@@ -14,6 +14,9 @@
     "cors": "*",
     "express": "*",
     "express-handlebars": "^3.0.2",
+    "jsonwebtoken": "*",
+    "passport": "*",
+    "passport-jwt": "*",
     "method-override": "^3.0.0",
     "nodemon": "^1.18.10",
     "redis": "^2.8.0",

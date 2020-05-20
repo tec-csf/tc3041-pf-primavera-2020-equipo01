@@ -11,8 +11,14 @@ import { AllBusinessesComponent } from './businesses/all-businesses/all-business
 import { FormBusinessesComponent } from './businesses/form-businesses/form-businesses.component';
 import { FormLocationsComponent } from './locations/form-locations/form-locations.component';
 import { AllLocationsComponent } from './locations/all-locations/all-locations.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { LoginComponent } from './login/login.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,15 +30,29 @@ import { FormsModule } from '@angular/forms';
     FormBusinessesComponent,
     FormLocationsComponent,
     AllLocationsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    // JWT set the JWT module with the local storage token
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('id_token');
+        }
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

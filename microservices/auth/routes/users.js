@@ -1,35 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const configRedis = require('../config/database');
-
-// REDIS NEEDS
-const redis = require('redis');
-
-const redisClient = redis.createClient({
-  port      : configRedis.port,              
-  host      : configRedis.host,     
-  password  : configRedis.password
-});
-
-redisClient.on('connect', function() {
-  console.log('Connected to redis for the Users');
-});
-
+const config = require('../config/database');
+const redisClient = require('../app')
 // ROUTE TO SEARCH USER IN REDIS
-router.post('/searchUser', (req, res, next) => {
-  let username = req.body.username;
-
+router.post('/authenticate', (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
   redisClient.hgetall(username, function(err, obj) {
     if (!obj) {
       return res.json({
         success: false,
-        msg: 'No existe admin con ese username'
+        msg: 'Username not found'
       });
     } else {
+      if (obj.password != password){
+        return res.json({
+          success: false,
+          msg: 'Incorrect Password'
+        });
+      }
+
+      const user = { 
+        username : username,
+        password : obj.password
+      }
+      const token = jwt.sign(user, config.secret, {expiresIn: 604800 });
       return res.json({
         success: true,
-        admin: obj
+        token: 'JWT ' + token,
+        user: user
       });
     }
   });
@@ -37,7 +37,7 @@ router.post('/searchUser', (req, res, next) => {
 
 
 // *** ROUTE TO CREATE USER IN REDIS ***
-router.post('/createUser', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 
@@ -45,12 +45,12 @@ router.post('/createUser', (req, res, next) => {
     if (!user) {
       return res.json({
         success: false,
-        msg: 'No se creo el usuario en redis'
+        msg: 'The user was not created in redis'
       });
     } else {
       return res.json({
         success: true,
-        msg: 'Se creo el usuario exitosamente en redis'
+        msg: 'The user was created in redis'
       });
     }
   });

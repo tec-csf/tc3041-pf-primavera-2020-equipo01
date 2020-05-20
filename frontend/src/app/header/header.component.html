@@ -5,8 +5,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-  
+      <ul *ngIf="loggin" class="navbar-nav mr-auto">
+        
         <li class="nav-item">
           <a class="nav-link" routerLink="/cases">Cases</a>
         </li>
@@ -16,8 +16,13 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/locations">Locations</a>
         </li>
-  
+        
       </ul>
+
+    </div>
+    <div class="form-inline my-2 my-lg-0">
+      <button *ngIf="loggin" class="btn btn-outline-info my-2 my-sm-0" (click)="loggOut()">Log out</button>
+      <button *ngIf="!loggin" class="btn btn-outline-info my-2 my-sm-0"><a routerLink="/login">Log in</a></button>  
     </div>
   </nav>
   

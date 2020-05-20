@@ -6,19 +6,22 @@ import { AllBusinessesComponent } from './businesses/all-businesses/all-business
 import { FormBusinessesComponent } from './businesses/form-businesses/form-businesses.component';
 import { AllLocationsComponent } from './locations/all-locations/all-locations.component';
 import { FormLocationsComponent } from './locations/form-locations/form-locations.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  {path:  "", pathMatch:  "full",redirectTo:  "cases"},
-  {path: "cases", component: AllCasesComponent},
-  {path: "cases/add", component: FormCasesComponent},
-  {path: "cases/edit/:id", component: FormCasesComponent},
-  {path: "businesses", component: AllBusinessesComponent},
-  {path: "businesses/add", component: FormBusinessesComponent},
-  {path: "businesses/edit/:id", component: FormBusinessesComponent},
-  {path: "locations", component: AllLocationsComponent},
-  {path: "locations/add", component: FormLocationsComponent},
-  {path: "locations/edit/:id", component: FormLocationsComponent}
+  {path:  "", pathMatch:  "full",redirectTo:  "login"},
+  {path: "login", component: LoginComponent},
+  {path: "cases", component: AllCasesComponent , canActivate: [AuthGuard] },
+  {path: "cases/add", component: FormCasesComponent , canActivate: [AuthGuard] },
+  {path: "cases/edit/:id", component: FormCasesComponent , canActivate: [AuthGuard] },
+  {path: "businesses", component: AllBusinessesComponent , canActivate: [AuthGuard] },
+  {path: "businesses/add", component: FormBusinessesComponent , canActivate: [AuthGuard] },
+  {path: "businesses/edit/:id", component: FormBusinessesComponent , canActivate: [AuthGuard] },
+  {path: "locations", component: AllLocationsComponent , canActivate: [AuthGuard] },
+  {path: "locations/add", component: FormLocationsComponent , canActivate: [AuthGuard] },
+  {path: "locations/edit/:id", component: FormLocationsComponent , canActivate: [AuthGuard] }
 ];
 
 @NgModule({
