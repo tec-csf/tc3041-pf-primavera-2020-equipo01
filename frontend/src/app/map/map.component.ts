@@ -19,7 +19,6 @@ export class MapComponent implements OnInit {
     this.http.get(environment.apiUrl + 'cases/getAll').subscribe((res:any) => {
       this.loading = false;
       if (res.success){
-        console.log(res.data)
         this.cases = res.data as Cases[]
       }
     }, error =>  console.log(error))

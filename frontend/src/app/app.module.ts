@@ -24,6 +24,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
 import { ChartsModule } from 'ng2-charts';
+import { ChartsComponent } from './charts/charts.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ChartsModule } from 'ng2-charts';
     AllLocationsComponent,
     LoginComponent,
     MapComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { ChartsModule } from 'ng2-charts';
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule,
+    ChartsModule,
     ToastrModule.forRoot(),
     // JWT set the JWT module with the local storage token
     JwtModule.forRoot({

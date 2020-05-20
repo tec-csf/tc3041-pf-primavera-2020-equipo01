@@ -3,10 +3,9 @@
 
 <div class="container">
     <h2 class="p-3">Map with covid-19 cases</h2>
-
-</div>
     <agm-map [latitude]="-23.8779431" [zoom]="15" [longitude]="-49.8046873">
         <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
             <agm-marker *ngFor="let case of cases" [latitude]="case.coordinates[1]" [longitude]="case.coordinates[0]"></agm-marker>
         </agm-marker-cluster>
     </agm-map>
+</div>
