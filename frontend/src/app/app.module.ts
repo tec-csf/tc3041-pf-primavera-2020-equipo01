@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 import { MapComponent } from './map/map.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ChartsComponent } from './charts/charts.component';
     LoginComponent,
     MapComponent,
     ChartsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

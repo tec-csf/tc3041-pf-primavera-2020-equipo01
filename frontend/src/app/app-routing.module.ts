@@ -10,10 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { MapComponent } from './map/map.component';
 import { ChartsComponent } from './charts/charts.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  {path:  "", pathMatch:  "full",redirectTo:  "login"},
+  {path:  "", pathMatch:  "full",redirectTo:  "home"},
+  {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
   {path: "map", component: MapComponent, canActivate: [AuthGuard] },
   {path: "chart", component: ChartsComponent, canActivate: [AuthGuard] },
