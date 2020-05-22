@@ -1,18 +1,37 @@
 <div class="container">
   <h2 class="p-3">See Covid Cases</h2>
-  <button type="button" class="btn btn-primary" [routerLink]="[ '/cases/add']">Add case</button>
-  <button type="button" class="btn btn-info" (click)="openModal('unwind')" data-toggle="modal" data-target="#modal">
-    Unwind query
-  </button>
-  <button type="button" class="btn btn-info" (click)="openModal('geoNear')" data-toggle="modal" data-target="#modal">
-    geoNear query
-  </button>
-  <button type="button" class="btn btn-info" (click)="openModal('facet')" data-toggle="modal" data-target="#modal">
-    facet query
-  </button>
-  <button type="button" class="btn btn-info" (click)="openModal('graphLookup')" data-toggle="modal" data-target="#modal">
-    graphLookup query
-  </button>
+  <div class="row">
+    <div class="col-8">
+      <button type="button" class="btn btn-primary" [routerLink]="[ '/cases/add']">Add case</button>
+      <button type="button" class="btn btn-info" (click)="openModal('unwind')" data-toggle="modal" data-target="#modal">
+        Unwind query
+      </button>
+      <button type="button" class="btn btn-info" (click)="openModal('geoNear')" data-toggle="modal" data-target="#modal">
+        geoNear query
+      </button>
+      <button type="button" class="btn btn-info" (click)="openModal('facet')" data-toggle="modal" data-target="#modal">
+        facet query
+      </button>
+      <button type="button" class="btn btn-info" (click)="openModal('graphLookup')" data-toggle="modal" data-target="#modal">
+        graphLookup query
+      </button>
+    </div>
+    <div class="col-4">
+      <p>Add cases for CSV</p>
+      <div class="form-group row" style="margin: 20px;">
+        <label class="col-sm-5 col-form-label p-2 text-center">File</label>
+        <div class="col-sm-7 pull-left text-left">
+          <input type="file" accept=".csv" name="files" #uploads (change)="onChange(uploads.files)" value="process" />
+        </div>
+        <div class="col-sm-12" style="margin: 10px;">
+          <button *ngIf="casesCSV" type="submit" (click)="addCSV()"
+            class="btn btn-primary btn-md btn-block">Add
+            {{casesCSV.length}} Cases</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <table class="table">
     <p *ngIf="loading"> Loading...</p>

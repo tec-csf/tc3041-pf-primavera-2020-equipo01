@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Cases } from 'src/app/shared/models/cases';
+import * as Papa from 'papaparse';
 declare var swal: any;
 declare var $: any;
 
@@ -15,6 +16,7 @@ export class AllCasesComponent implements OnInit {
   json:String;
   cases: Cases[];
   p: number = 1;
+  casesCSV: [];
 
   constructor(
     private http: HttpClient
@@ -60,4 +62,30 @@ export class AllCasesComponent implements OnInit {
       }
     })
   }
+
+  addCSV() {
+    this.http.post(environment.CSV + 'cases/addCSV', this.casesCSV).subscribe((res:any) => {
+      console.log(res)
+      res.forEach(r => {   
+        if (r.success){
+          swal("The case has been added");
+        } else {
+          swal(r.msg);
+        }
+      });
+    })
+  }
+
+  onChange(files: File[]) {
+    if (files[0]) {
+      Papa.parse(files[0], {
+        header: true,
+        skipEmptyLines: true,
+        complete: (result, file) => {
+          this.casesCSV = result.data;
+        }
+      });
+    }
+  }
+
 }

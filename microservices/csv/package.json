@@ -1,0 +1,30 @@
+{
+  "name": "CSVmicroservice",
+  "version": "0.1.0",
+  "description": "Microservice to add cases from file",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "start-hot": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "mongoose-float": "^1.0.4",
+    "nodemon": "^1.18.10",
+    "passport": "*",
+    "passport-jwt": "*",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  },
+  "engines": {
+    "node": "10.x.x"
+  },
+  "author": "Daniel Charua",
+  "license": "ISC"
+}
