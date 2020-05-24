@@ -63,9 +63,15 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Modelos de *bases de datos* utilizados
 
-Los modelos de bases de datos utilizados son dos:
+Los modelos de bases de datos utilizados son los siguientes:
    * MongoDB, una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
-   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones en la aplicación.
+   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
+   
+   Utilizamos MongoDB por la facilidad de uso del framework de agregación cuando se realizan consultas y por su servicio acccesible de 
+   hosting de la base de datos en Mongo Atlas. 
+   
+   Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
+   evita tener que desarrollar ese funcionamiento a nivel aplicación. 
 
 ### 3.2 Arquitectura de la solución
 
