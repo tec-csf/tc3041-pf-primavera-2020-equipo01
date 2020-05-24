@@ -55,7 +55,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*[Incluya aquí la descripción del proyecto seleccionado.]*
+Nuestro proyecto consiste en el desarrollo de una aplicación web para cargar datos, monitorear, analizar y registrar casos de la enfermedad por Coronavirus-2019. 
 
 ## 3. Solución
 
@@ -64,8 +64,8 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 ### 3.1 Modelos de *bases de datos* utilizados
 
 Los modelos de bases de datos utilizados son dos:
-   * MongoDB, una base de datos NoSQL basada en documentos
-   * Redis, una base de datos NoSQL basada en el esquema llave-valor 
+   * MongoDB, una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
+   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones en la aplicación.
 
 ### 3.2 Arquitectura de la solución
 
