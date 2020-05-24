@@ -65,44 +65,47 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 Los modelos de bases de datos utilizados son los siguientes:
    * MongoDB, una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
-   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
    
    Utilizamos MongoDB por la facilidad de uso del framework de agregación cuando se realizan consultas y por su servicio acccesible de 
-   hosting de la base de datos en Mongo Atlas. 
+   hosting de la base de datos en Mongo Atlas.
    
+   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
+  
    Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
    evita tener que desarrollar ese funcionamiento a nivel aplicación. 
+   
+### 3.2 Descripción de los datasets
 
-### 3.2 Arquitectura de la solución
+### 3.3 Arquitectura de la solución
 
 *[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
 
 
 La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
 
-### 3.3 Frontend
+### 3.4 Frontend
 
 *[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
-#### 3.3.1 Lenguaje de programación
-#### 3.3.2 Framework
-#### 3.3.3 Librerías de funciones o dependencias
-
-### 3.4 Backend
-
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework
 #### 3.4.3 Librerías de funciones o dependencias
 
-### 3.5 API
+### 3.5 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.5.1 Lenguaje de programación
 #### 3.5.2 Framework
 #### 3.5.3 Librerías de funciones o dependencias
+
+### 3.6 API
+
+*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+
+#### 3.6.1 Lenguaje de programación
+#### 3.6.2 Framework
+#### 3.6.3 Librerías de funciones o dependencias
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
 
@@ -116,7 +119,7 @@ La base de datos esta configurada como una arquitectura de desarrollo en Mongo. 
 * **Formato JSON de la respuesta**:
 * **Códigos de error**:
 
-## 3.6 Pasos a seguir para utilizar el proyecto
+## 3.7 Pasos a seguir para utilizar el proyecto
 
 *[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
 
