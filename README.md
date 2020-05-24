@@ -1,13 +1,13 @@
 # TC3041 Proyecto Final Primavera 2020
 
-# *[Poner aquí el Título del Proyecto]*
+# Covid-19DB
 ---
 
 ##### Integrantes:
-1. *[Poner aquí Nombre y Apellidos del integrante 1]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-2. *[Poner aquí Nombre y Apellidos del integrante 2]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-3. *[Poner aquí Nombre y Apellidos del integrante 3]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-4. *[Poner aquí Nombre y Apellidos del integrante 4]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
+1. *Daniel Charua* - *A01017419* - *CSF*
+2. *Roberto Alejandro Gutiérrez Guillén* - *A01019608* - *CSF*
+3. *Eduardo Badillo Álvarez* - *A01020716* - *CSF*
+4. *Sergio Hernandez Castillo* - *A01025210* - *CSF*
 
 ---
 ## 1. Aspectos generales
@@ -75,6 +75,20 @@ Los modelos de bases de datos utilizados son los siguientes:
    evita tener que desarrollar ese funcionamiento a nivel aplicación. 
    
 ### 3.2 Descripción de los datasets
+
+El dataset fue producido en una aplicación de generación de datos JSON con el propósito de almacenar una cantidad realista de gente probada por coronavirus (aproximadamente diez millones de casos). 
+
+Los campos del dataset son los siguientes:
+* Nombre
+* Apellidos
+* Edad 
+* Sexo
+* Confirmado
+* Coordenadas
+* Lista de amigos
+* Lista de amigos recientemente visitados
+
+Para la generación de gráficas utilizamos una API que utiliza un repositorio oficial del conteo de cifras para poder desplegar datos fidedignos.
 
 ### 3.3 Arquitectura de la solución
 
