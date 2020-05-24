@@ -26,7 +26,10 @@ import { MapComponent } from './map/map.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
 import { HomeComponent } from './home/home.component';
-
+// QR code
+import { NgQRCodeReaderModule } from 'ng2-qrcode-reader';  
+import { QRCodeModule } from "angularx-qrcode";
+import { QrComponent } from './qr/qr.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { HomeComponent } from './home/home.component';
     AllLocationsComponent,
     LoginComponent,
     MapComponent,
+    QrComponent,
     ChartsComponent,
     HomeComponent,
   ],
@@ -51,6 +55,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     BrowserAnimationsModule,
     ChartsModule,
+    NgQRCodeReaderModule, 
+    QRCodeModule,
     ToastrModule.forRoot(),
     // JWT set the JWT module with the local storage token
     JwtModule.forRoot({

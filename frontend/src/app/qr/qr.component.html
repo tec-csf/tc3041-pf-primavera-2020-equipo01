@@ -1,0 +1,34 @@
+<div class="container">
+<qrcode
+  [qrdata]="qrdata"
+  [width]="256"
+  [level]="'M'"
+  [elementType]="elementType"
+  [scale]="scale"
+></qrcode>
+
+<br />
+
+<div class="text">
+  <label>
+    Type to change: <input [(ngModel)]="qrdata" placeholder="name" />
+  </label>
+  <br />
+  <br />
+  <button (click)="changeValue('Bruce')">Change Value to Bruce</button>
+  <button (click)="changeValue('Peter Parker')">
+    Change Value to Peter Parker
+  </button>
+  <button (click)="changeValue('42')">Change Value to 42</button>
+
+</div>
+
+<div style="text-align:center">  
+  <h2>Upload an QR code</h2>  
+  <input type="file" #file name="file" id="file" (change)="preview(file.files)">  
+  <ng2-qrcode-reader (result)="render($event)" [qrr-show]="showQRCode" [qrr-value]="value" [qrr-type]="elementType">  
+  </ng2-qrcode-reader><br>  
+  <div #result></div>  
+</div>
+
+</div>

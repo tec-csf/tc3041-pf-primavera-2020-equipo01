@@ -11,6 +11,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { MapComponent } from './map/map.component';
 import { ChartsComponent } from './charts/charts.component';
 import { HomeComponent } from './home/home.component';
+import { QrComponent } from './qr/qr.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
   {path: "map", component: MapComponent, canActivate: [AuthGuard] },
+  {path: "qr", component: QrComponent, canActivate: [AuthGuard] },
   {path: "chart", component: ChartsComponent, canActivate: [AuthGuard] },
   {path: "cases", component: AllCasesComponent , canActivate: [AuthGuard] },
   {path: "cases/add", component: FormCasesComponent , canActivate: [AuthGuard] },
