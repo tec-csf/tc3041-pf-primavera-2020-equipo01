@@ -63,11 +63,16 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Modelos de *bases de datos* utilizados
 
-*[Incluya aquí una explicación del análisis realizado y la justificación de los modelos de *bases de datos* seleccionados. Incluya todo lo que considere necesario para que una persona sin conocimientos técnicos pueda entender de que trata su solución.]*
+Los modelos de bases de datos utilizados son dos:
+   * MongoDB, una base de datos NoSQL basada en documentos
+   * Redis, una base de datos NoSQL basada en el esquema llave-valor 
 
 ### 3.2 Arquitectura de la solución
 
 *[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+
+
+La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
 
 ### 3.3 Frontend
 
