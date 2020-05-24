@@ -92,10 +92,14 @@ Para la generación de gráficas utilizamos una API que utiliza un repositorio o
 
 ### 3.3 Arquitectura de la solución
 
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
-
+#### MongoDB
+![Arquitectura de la solución](assets/arqui.png)
 
 La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
+
+El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 8080, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un bucket de GCP.
+
+#### Redis
 
 ### 3.4 Frontend
 
