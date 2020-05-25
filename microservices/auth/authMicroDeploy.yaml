@@ -1,0 +1,39 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: auth
+  labels:
+    name: 
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    name: auth-micro
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name:  auth-micro
+  labels:
+    name:  auth-micro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name:  auth-micro
+  template:
+    metadata:
+      labels:
+        name:  auth-micro
+    spec:
+      containers:
+        - name: auth
+          image: auth-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
