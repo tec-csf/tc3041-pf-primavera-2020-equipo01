@@ -140,7 +140,20 @@ El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenid
 ## 3.7 Pasos a seguir para utilizar el proyecto
 
 *[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
+Instalar
+Bajar el git
+Correr npm install en carpeta front-end
+Correr npm install en microservices/auth
 
+Correr el app
+ng serve
+Front end - Carpeta de front end
+npm start run
+API - Carpeta de APi
+npm start
+Auth Redis - Carpeta microservices/auth
+npm start
+Micro - Carpeta microservices/micro
 ## 4. Referencias
 
 *[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
