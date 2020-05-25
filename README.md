@@ -1,13 +1,13 @@
 # TC3041 Proyecto Final Primavera 2020
 
-# *[Poner aquí el Título del Proyecto]*
+# Covid-19DB
 ---
 
 ##### Integrantes:
-1. *[Poner aquí Nombre y Apellidos del integrante 1]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-2. *[Poner aquí Nombre y Apellidos del integrante 2]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-3. *[Poner aquí Nombre y Apellidos del integrante 3]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
-4. *[Poner aquí Nombre y Apellidos del integrante 4]* - *[Poner aquí su Matrícula]* - *[Poner aquí su campus]*
+1. *Daniel Charua* - *A01017419* - *CSF*
+2. *Roberto Alejandro Gutiérrez Guillén* - *A01019608* - *CSF*
+3. *Eduardo Badillo Álvarez* - *A01020716* - *CSF*
+4. *Sergio Hernandez Castillo* - *A01025210* - *CSF*
 
 ---
 ## 1. Aspectos generales
@@ -55,7 +55,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*[Incluya aquí la descripción del proyecto seleccionado.]*
+Nuestro proyecto consiste en el desarrollo de una aplicación web para cargar datos, monitorear, analizar y registrar casos de la enfermedad por Coronavirus-2019. 
 
 ## 3. Solución
 
@@ -63,35 +63,67 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Modelos de *bases de datos* utilizados
 
-*[Incluya aquí una explicación del análisis realizado y la justificación de los modelos de *bases de datos* seleccionados. Incluya todo lo que considere necesario para que una persona sin conocimientos técnicos pueda entender de que trata su solución.]*
+Los modelos de bases de datos utilizados son los siguientes:
+   * MongoDB, una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
+   
+   Utilizamos MongoDB por la facilidad de uso del framework de agregación cuando se realizan consultas y por su servicio acccesible de 
+   hosting de la base de datos en Mongo Atlas.
+   
+   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
+  
+   Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
+   evita tener que desarrollar ese funcionamiento a nivel aplicación. 
+   
+### 3.2 Descripción de los datasets
 
-### 3.2 Arquitectura de la solución
+El dataset fue producido en una aplicación de generación de datos JSON con el propósito de almacenar una cantidad realista de gente probada por coronavirus (aproximadamente diez millones de casos). 
 
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+Los campos del dataset son los siguientes:
+* Nombre
+* Apellidos
+* Edad 
+* Sexo
+* Confirmado
+* Coordenadas
+* Lista de amigos
+* Lista de amigos recientemente visitados
 
-### 3.3 Frontend
+Para la generación de gráficas utilizamos una API que utiliza un repositorio oficial del conteo de cifras para poder desplegar datos fidedignos.
+
+### 3.3 Arquitectura de la solución
+
+#### MongoDB
+![Arquitectura de la solución](assets/arqui.png)
+
+La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
+
+El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 8080, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un bucket de GCP.
+
+#### Redis
+
+### 3.4 Frontend
 
 *[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
-#### 3.3.1 Lenguaje de programación
-#### 3.3.2 Framework
-#### 3.3.3 Librerías de funciones o dependencias
-
-### 3.4 Backend
-
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework
 #### 3.4.3 Librerías de funciones o dependencias
 
-### 3.5 API
+### 3.5 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.5.1 Lenguaje de programación
 #### 3.5.2 Framework
 #### 3.5.3 Librerías de funciones o dependencias
+
+### 3.6 API
+
+*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+
+#### 3.6.1 Lenguaje de programación
+#### 3.6.2 Framework
+#### 3.6.3 Librerías de funciones o dependencias
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
 
@@ -105,7 +137,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 * **Formato JSON de la respuesta**:
 * **Códigos de error**:
 
-## 3.6 Pasos a seguir para utilizar el proyecto
+## 3.7 Pasos a seguir para utilizar el proyecto
 
 *[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
 
