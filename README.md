@@ -71,7 +71,7 @@ Los modelos de bases de datos utilizados son los siguientes:
    
    *El JSON Schema de la base de datos se encuentra en el folder "database".*
 
-![Modelo de la base de datos](assets/Diagrama.png)
+![Modelo de la base de datos](assets/diagrama.png)
 
 El patrón de modelación de nuestra base de datos es referencial. Es decir, en vez de embeber subdocumentos como parte de una colección para denotar relación se guardan referencias en los documentos a documentos en otras colecciones. 
 
