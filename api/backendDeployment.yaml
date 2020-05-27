@@ -1,9 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: backend-service
+  name: api-service
   labels:
-    name: backend-service
+    name: api-service
 spec:
   ports:
     - name: http
@@ -11,29 +11,29 @@ spec:
       targetPort: 8081
       protocol: TCP
   selector:
-    name: backend-app
+    name: api-app
   type: LoadBalancer
 
 ---
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: backend-app
+  name: api-app
   labels:
-    name: backend-app
+    name: api-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: backend-app
+      name: api-app
   template:
     metadata:
       labels:
-        name: backend-app
+        name: api-app
     spec:
       containers:
-        - name: backend
-          image: backend-image
+        - name: api
+          image: gcr.io/hwk1-adb/api:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081

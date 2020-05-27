@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: auth-image
+          image: gcr.io/hwk1-adb/auth:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

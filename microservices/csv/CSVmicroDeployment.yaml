@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: csv
-          image: csv-image
+          image: gcr.io/hwk1-adb/csv:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3001

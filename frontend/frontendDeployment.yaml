@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: frontend-image
+          image: gcr.io/hwk1-adb/frontend-image
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 4200
