@@ -95,7 +95,7 @@ Para la generación de gráficas utilizamos una API que utiliza un repositorio o
 Los dos modelos de bases de datos se están ejecutando en servidores externos, respectivamente Atlas y Redis-labs.
 
 #### MongoDB
-![Arquitectura de la solución](assets/arqui.png)
+![Arquitectura de la solución](assets/MongoDiagram.png)
 
 La base de datos de Mongo esta configurada como una arquitectura de desarrollo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
 
@@ -103,7 +103,7 @@ La base de datos de Mongo esta configurada como una arquitectura de desarrollo. 
 
 ![Arquitectura de RedisDB](assets/RedisDiagram.png)
 
-La base de datos de Redis está configurada como la arquitectura default de alta disponibilidad de Redis. Es decir, consiste de un cluster con un nodo maestro y un nodo esclavo para proveer redundancia mediante replicación.
+La base de datos de Redis está configurada como la arquitectura default de alta disponibilidad de Redis. Es decir, consiste de un cluster con un nodo maestro y nodos esclavos para proveer redundancia mediante replicación. 
 
 ### 3.4 Frontend
 
