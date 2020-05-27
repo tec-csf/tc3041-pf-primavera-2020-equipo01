@@ -119,6 +119,10 @@ La base de datos de Mongo esta configurada como una arquitectura de desarrollo. 
 
 La base de datos de Redis está configurada como la arquitectura default de alta disponibilidad de Redis. Es decir, consiste de un cluster con un nodo maestro y nodos esclavos para proveer redundancia mediante replicación. 
 
+El modelo siguiente muestra las interacciones de los dos microservicios expuestos anteriormente integrados con el microservicio de carga de csvs, el microservicio de QR Code y el API externo para consultar las cifras oficiales de Covid-19.
+
+![Arquitectura global](assets/MainDiagram.png)
+
 ### 3.4 Frontend
 
 *[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
