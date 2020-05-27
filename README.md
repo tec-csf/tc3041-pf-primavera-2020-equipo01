@@ -69,6 +69,17 @@ Los modelos de bases de datos utilizados son los siguientes:
    Utilizamos MongoDB por la facilidad de uso del framework de agregación cuando se realizan consultas y por su servicio acccesible de 
    hosting de la base de datos en Mongo Atlas.
    
+   *El JSON Schema de la base de datos se encuentra en el folder "database".*
+
+![Modelo de la base de datos](assets/Diagrama.png)
+
+El patrón de modelación de nuestra base de datos es referencial. Es decir, en vez de embeber subdocumentos como parte de una colección para denotar relación se guardan referencias en los documentos a documentos en otras colecciones. 
+
+* La colección Cases guarda una relación referencial con Businesses 1:1 (Businesses._id)<->(Cases._id)
+* La colección Cases guarda una relación referencial con Locations 1:1 (Cases._id)<->(Locations._id)
+* La colección Cases guarda una relacion referencial con si misma 1:N Vector(closestFriends[])*->(Cases._id)
+* La colección Businesses guarda una relación referencial con si misma 1:N Vector(suppliers[])*->(Businesses._id)
+   
    * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
   
    Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
