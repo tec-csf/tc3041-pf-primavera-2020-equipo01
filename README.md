@@ -83,12 +83,10 @@ El patrón de modelación de nuestra base de datos es referencial. Es decir, en 
 * La colección Cases guarda una relacion referencial con si misma 1:N Vector(closestFriends[])*->(Cases._id)
 * La colección Businesses guarda una relación referencial con si misma 1:N Vector(suppliers[])*->(Businesses._id)
    
-   #### Redis 
-   
-   Una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
-  
-   Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
-   evita tener que desarrollar ese funcionamiento a nivel aplicación. 
+#### Redis 
+Una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
+
+Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se evita tener que desarrollar ese funcionamiento a nivel aplicación. 
    
 ### 3.2 Descripción de los datasets
 
