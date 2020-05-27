@@ -64,15 +64,29 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 ### 3.1 Modelos de *bases de datos* utilizados
 
 Los modelos de bases de datos utilizados son los siguientes:
-   * MongoDB, una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
+
+   #### MongoDB
+   
+   Una base de datos NoSQL basada en documentos, para registrar los casos de Covid-19. 
    
    Utilizamos MongoDB por la facilidad de uso del framework de agregación cuando se realizan consultas y por su servicio acccesible de 
    hosting de la base de datos en Mongo Atlas.
    
-   * Redis, una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
-  
-   Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se    
-   evita tener que desarrollar ese funcionamiento a nivel aplicación. 
+   *El JSON Schema de la base de datos se encuentra en el folder "database".*
+
+![Modelo de la base de datos](assets/diagrama.png)
+
+El patrón de modelación de nuestra base de datos es referencial. Es decir, en vez de embeber subdocumentos como parte de una colección para denotar relación se guardan referencias en los documentos a documentos en otras colecciones. 
+
+* La colección Cases guarda una relación referencial con Businesses 1:1 (Businesses._id)<->(Cases._id)
+* La colección Cases guarda una relación referencial con Locations 1:1 (Cases._id)<->(Locations._id)
+* La colección Cases guarda una relacion referencial con si misma 1:N Vector(closestFriends[])*->(Cases._id)
+* La colección Businesses guarda una relación referencial con si misma 1:N Vector(suppliers[])*->(Businesses._id)
+   
+#### Redis 
+Una base de datos NoSQL basada en el esquema llave-valor, para gestionar las sesiones de usuario en la aplicación.
+
+Utilizamos Redis por el manejo nativo de expiración de los registros, al ser automatizada la duración de sesión de los usuarios se evita tener que desarrollar ese funcionamiento a nivel aplicación. 
    
 ### 3.2 Descripción de los datasets
 
@@ -92,14 +106,24 @@ Para la generación de gráficas utilizamos una API que utiliza un repositorio o
 
 ### 3.3 Arquitectura de la solución
 
+Los dos modelos de bases de datos se están ejecutando en servidores externos, respectivamente Atlas y Redis-labs.
+
 #### MongoDB
-![Arquitectura de la solución](assets/arqui.png)
+![Arquitectura de la solución](assets/MongoDiagram.png)
 
-La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
-
-El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 8080, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un bucket de GCP.
+La base de datos de Mongo esta configurada como una arquitectura de desarrollo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
 
 #### Redis
+
+![Arquitectura de RedisDB](assets/RedisDiagram.png)
+
+La base de datos de Redis está configurada como la arquitectura default de alta disponibilidad de Redis. Es decir, consiste de un cluster con un nodo maestro y nodos esclavos para proveer redundancia mediante replicación. 
+
+#### Diagrama global
+
+El modelo siguiente muestra las interacciones de los dos microservicios expuestos anteriormente integrados con el microservicio de carga de csvs, el microservicio de QR Code y el API externo para consultar las cifras oficiales de Covid-19.
+
+![Arquitectura global](assets/MainDiagram.png)
 
 ### 3.4 Frontend
 
@@ -112,6 +136,8 @@ El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenid
 ### 3.5 Backend
 
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+
+El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 3000, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
 #### 3.5.2 Framework
