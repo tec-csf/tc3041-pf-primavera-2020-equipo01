@@ -92,14 +92,18 @@ Para la generación de gráficas utilizamos una API que utiliza un repositorio o
 
 ### 3.3 Arquitectura de la solución
 
+Los dos modelos de bases de datos se están ejecutando en servidores externos, respectivamente Atlas y Redis-labs.
+
 #### MongoDB
 ![Arquitectura de la solución](assets/arqui.png)
 
-La base de datos esta configurada como una arquitectura de desarrollo en Mongo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
-
-El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 8080, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un bucket de GCP.
+La base de datos de Mongo esta configurada como una arquitectura de desarrollo. Es decir, consiste de un solo replica set de 3 nodos y otro replica set de configuración. 
 
 #### Redis
+
+![Arquitectura de RedisDB](assets/RedisDiagram.png)
+
+La base de datos de Redis está configurada como la arquitectura default de alta disponibilidad de Redis. Es decir, consiste de un cluster con un nodo maestro y un nodo esclavo para proveer redundancia mediante replicación.
 
 ### 3.4 Frontend
 
@@ -112,6 +116,8 @@ El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenid
 ### 3.5 Backend
 
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+
+El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 3000, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
 #### 3.5.2 Framework
