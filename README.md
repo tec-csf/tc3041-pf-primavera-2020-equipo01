@@ -163,23 +163,224 @@ El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenid
 * **Formato JSON de la respuesta**:
 * **Códigos de error**:
 
-## 3.7 Pasos a seguir para utilizar el proyecto
 
-*[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
-Instalar
-Bajar el git
-Correr npm install en carpeta front-end
-Correr npm install en microservices/auth
+## 3.6 Pasos a seguir para utilizar el proyecto
 
-Correr el app
-ng serve
-Front end - Carpeta de front end
-npm start run
-API - Carpeta de APi
-npm start
-Auth Redis - Carpeta microservices/auth
-npm start
-Micro - Carpeta microservices/micro
+### Para ejecutarlo local
+
+1. Clonar el repositorio de GitHub
+
+`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
+
+2. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/api`
+
+3. Instalar las dependencias de NodeJs para el backend
+
+`npm install`
+
+4. Iniciar la app del backend de la API Rest
+
+`npm start`
+
+5. Abrir otra terminal y cambiarse a la carpeta del microservicios/auth
+
+6. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/microservices/auth`
+
+7. Instalar las dependencias de NodeJs para el backend
+
+`npm install`
+
+8. Iniciarel microservicio auth en Redis
+
+`npm start`
+
+9. Abrir otra terminal y cambiarse a la carpeta del microservicios/csv
+
+10. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/microservices/csv`
+
+11. Instalar las dependencias de NodeJs para el backend
+
+`npm install`
+
+12. Iniciar el microservicio de carga de csv
+
+`npm start`
+
+13. Abrir otra terminal y cambiarse a la carpeta del frontend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/frontend`
+
+14. Instalar las dependencias de NodeJs para el frontend
+
+`npm install`
+
+15. Iniciar el frontend de la aplicación.
+
+`ng serve`
+
+16. Abrir el navegador en el puerto 4200 para ver la aplicación funcionando
+
+http://localhost:4200
+
+### Para ejecutarlo en la nube (Google Cloud)
+
+#### En GCLOUD console
+
+1. Entra a la consola de Google Cloud Platform (GCP) 
+
+https://console.cloud.google.com
+
+2. Crea un proyecto en el cual se desplegará la aplicación
+
+3. Abre la terminal de GCP
+
+4. Clona el repositorio de Gitub
+
+`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
+
+5. Dentro de la plataforma entra a Compute/Kubernetes Engine y crea un nuevo cluster
+
+#### En tu computadora (API)
+
+1. Clonar el repositorio de github
+
+`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
+
+2. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/api`
+
+3. Crear la imagen de la api usando el comando
+
+`docker build . --tag gcr.io/[id del proyecto de GCP]/api`
+
+4. Dar push a la imagen de la api usando el comando
+
+`gcloud docker -- push gcr.io/[ID del proyecto de GCP]/api`
+
+
+5. Crea la conexión con el cluster creado previamente
+
+`gcloud container clusters get-credentials [Nombre del cluster] --zone [Zona del cluster] --project [ID del proyecto de GCP]`
+
+6. Desplegar la aplicación en el cluster
+
+`kubectl apply -f backendDeployment.yaml`
+
+7. Comprobar que el pod está funcionando correctamente (El Status debe ser Running)
+
+`kubectl get pods`
+
+8. Obtener la dirección IP externa y el puerto del backend-service
+
+`kubectl get service`
+
+#### En tu computadora (auth)
+
+1. Clonar el repositorio de github
+
+`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
+
+2. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/auth`
+
+3. Crear la imagen del microservicio auth usando el comando
+
+`docker build . --tag gcr.io/[id del proyecto de GCP]/auth`
+
+4. Dar push a la imagen del microservicio auth usando el comando
+
+`gcloud docker -- push gcr.io/[ID del proyecto de GCP]/auth`
+
+5. Desplegar la aplicación en el cluster
+
+`kubectl apply -f authMicroDeploy.yaml`
+
+6. Comprobar que el pod está funcionando correctamente (El Status debe ser Running)
+
+`kubectl get pods`
+
+7. Obtener la dirección IP externa y el puerto del backend-service
+
+`kubectl get service`
+
+#### En tu computadora (csv)
+
+1. Clonar el repositorio de github
+
+`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
+
+2. Cambiarse a la carpeta del backend del proyecto
+
+`cd tc3041-pf-primavera-2020-equipo01/csv`
+
+3. Crear la imagen del microservicio csv usando el comando
+
+`docker build . --tag gcr.io/[id del proyecto de GCP]/csv`
+
+4. Dar push a la imagen del microservicio csv usando el comando
+
+`gcloud docker -- push gcr.io/[ID del proyecto de GCP]/csv`
+
+5. Desplegar la aplicación en el cluster
+
+`kubectl apply -f CSVmicroDeploy.yaml`
+
+6. Comprobar que el pod está funcionando correctamente (El Status debe ser Running)
+
+`kubectl get pods`
+
+7. Obtener la dirección IP externa y el puerto del backend-service
+
+`kubectl get service`
+
+#### En tu computadora (FRONTEND)
+
+1. Cambiarse a la carpeta del frontend del proyecto
+
+`cd ../frontend`
+
+2. Modificar el siguiente archivo: src/app/enviroments/enviroments.prod.ts
+
+Cambiar la rutas de conexión con las IPS de los clusters:
+```typescript
+route: String = 'http://[IP externa del backend-service]:[Puerto del backend-service]'; 
+```
+3. Crear la imagen del frontend usando el comando
+
+`docker build . --tag gcr.io/[ID del proyecto de GCP]/frontexp-image`
+
+4. Dar push a la imagen del frontend usando el comando
+
+`gcloud docker -- push gcr.io/[ID del proyecto de GCP]/frontexp-image`
+
+5. Desplegar la aplicación en el cluster
+
+`kubectl apply -f frontendDeployment.yaml`
+
+6. Comprobar que el pod está funcionando correctamente (El Status debe ser Running)
+
+`kubectl get pods`
+
+7. Obtener la dirección IP externa y el puerto
+
+`kubectl get service`
+
+8. Acceder a la aplicación en un browser
+
+`http://[IP externa del frontend-service]:[Puerto del frontend-service]`
+
 ## 4. Referencias
 
-*[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+1. [Conexión con Mongoose](https://mongoosejs.com/docs/guide.html)
+2. [Crear un contenedor de docker con Angular](https://scotch.io/tutorials/create-a-mean-app-with-angular-2-and-docker-compose)
+3. [Crear un contenedor de docker con Node.js](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
+4. [Implementar una aplicación web en contenedor](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
+5. [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling)
