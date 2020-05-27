@@ -30,7 +30,9 @@ import { HomeComponent } from './home/home.component';
 import { NgQRCodeReaderModule } from 'ng2-qrcode-reader';  
 import { QRCodeModule } from "angularx-qrcode";
 import { QrComponent } from './qr/qr.component';
-
+export function jwtTokenGetter() {
+  return localStorage.getItem('id_token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,9 +63,7 @@ import { QrComponent } from './qr/qr.component';
     // JWT set the JWT module with the local storage token
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('id_token');
-        }
+        tokenGetter: jwtTokenGetter
       }
     }),
     //Google mpas
@@ -78,4 +78,6 @@ import { QrComponent } from './qr/qr.component';
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: '10.4.3.6:80',
-  auth: '10.4.12.66:80',
-  CSV: '10.4.10.178:80',
+  apiUrl: 'http://34.72.143.122/',
+  auth: 'http://34.71.4.212/',
+  CSV: 'http://34.70.28.144/',
   maps : 'AIzaSyAjfsVYLl5-ub-xmXPRNQUmKt3nMOKZ1Pk',
 };

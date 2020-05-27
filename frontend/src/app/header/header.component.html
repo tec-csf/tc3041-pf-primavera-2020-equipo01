@@ -29,7 +29,7 @@
     </div>
     <div class="form-inline my-2 my-lg-0">
       <button *ngIf="loggin" class="btn btn-outline-info my-2 my-sm-0" (click)="loggOut()">Log out</button>
-      <button *ngIf="!loggin" class="btn btn-outline-info my-2 my-sm-0"><a routerLink="/login">Log in</a></button>  
+      <button *ngIf="!loggin" routerLink="/login" class="btn btn-outline-info my-2 my-sm-0"><a >Log in</a></button>  
     </div>
   </nav>
   
