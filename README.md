@@ -130,14 +130,14 @@ El modelo siguiente muestra las interacciones de los dos microservicios expuesto
 El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular.
 
 El front también ofrece unos modulos de operaciones de visualización básicas para el usuario:
-* Ver datos reales a nivel global con la api (covid) [https://covid19api.com/].
-* Registrarse a la aplicación [https://covid19api.com/].
-* Ingresar a la aplicación [https://covid19api.com/].
-* Operaciónes CRUD en casos,  negocios y localidades. [https://covid19api.com/].
+* Ver datos reales a nivel global con la api [covid](https://covid19api.com/).
+* Registrarse a la aplicación.
+* Ingresar a la aplicación.
+* Operaciónes CRUD en casos,  negocios y localidades.
 * La función de visualizar las tablas de casos, negocios y localidades.
 * Cargar múltiples casos a la vez con la función de CSV.
 * La función de escanear el código QR fue desarrollado con Angular y opera conjuntamente con los demás componentes del Front.
-* La función de ver gráfica con datos reales de la tasa de infección en México con la api (covid) [https://covid19api.com/].
+* La función de ver gráfica con datos reales de la tasa de infección en México con la api [covid][(https://covid19api.com/).
 * La función de visualizar el mapa de coordenadas de los casos por Covid-19 (experimental, son ficticias).
 
 #### 3.4.1 Lenguaje de programación
@@ -436,3 +436,4 @@ route: String = 'http://[IP externa del backend-service]:[Puerto del backend-ser
 3. [Crear un contenedor de docker con Node.js](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 4. [Implementar una aplicación web en contenedor](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
 5. [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling)
+6. [API de Covid](https://covid19api.com/).
