@@ -194,14 +194,27 @@ El framework utilizado fue [Node-js Express](https://expressjs.com/)
 
 ####  3.6.4 Endpoints
 ##### Cases
+- GET : cases/getALL -> Se regresa un JSON con los primeros 100 elementos de la colección, para eficientizar el tiempo de respuesta
+- PUT: cases/add ->  se agrega un objeto nuevo a la colección, se espera un objeto JSON con los datos del objeto nuevo
+- DELETE: cases/delete/:id ->  se borra un objeto con el id en el URL de la colección
+- PUT: cases/update/:id ->  se edita el objeto con el id de la URL de la colección, se espera un objeto JSON con los datos del objeto
+- GET : cases/unwind -> Se regresa un JSON con el resultado del query unwind
+- GET : cases/geoNear -> Se regresa un JSON con el resultado del query neoNear
+- GET : cases/facet -> Se regresa un JSON con el resultado del query facet
+- GET : cases/graphLookup -> Se regresa un JSON con el resultado del query graphLookup
 
-* Obtiene todos los casos en la base de datos:
-* cases/getALL:
-* GET:
-* Sin Solicitud: 
-* Se regresa un JSON con los primeros 100 elementos de la colección:
-* 500:
+##### Buisnesses
+- GET : buisnesses/getALL -> Se regresa un JSON con los primeros 100 elementos de la colección, para eficientizar el tiempo de respuesta
+- PUT: buisnesses/add ->  se agrega un objeto nuevo a la colección, se espera un objeto JSON con los datos del objeto nuevo
+- DELETE: buisnesses/delete/:id ->  se borra un objeto con el id en el URL de la colección
+- PUT: buisnesses/update/:id ->  se edita el objeto con el id de la URL de la colección, se espera un objeto JSON con los datos del objeto
+- GET : cases/lookup -> Se regresa un JSON con el resultado del query lookup
 
+##### Locations
+- GET : locations/getALL -> Se regresa un JSON con los primeros 100 elementos de la colección, para eficientizar el tiempo de respuesta
+- PUT: locations/add ->  se agrega un objeto nuevo a la colección, se espera un objeto JSON con los datos del objeto nuevo
+- DELETE: locations/delete/:id ->  se borra un objeto con el id en el URL de la colección
+- PUT: locations/update/:id ->  se edita el objeto con el id de la URL de la colección, se espera un objeto JSON con los datos del objeto
 
 ## 3.6 Pasos a seguir para utilizar el proyecto
 
