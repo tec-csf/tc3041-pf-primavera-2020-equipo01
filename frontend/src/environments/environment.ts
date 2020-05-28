@@ -7,7 +7,7 @@ export const environment = {
   apiUrl: 'http://localhost:8081/',
   auth: 'http://localhost:3000/',
   CSV: 'http://localhost:3001/',
-  micro: 'http://localhost:3002/',
+  news: 'http://localhost:3002/',
   maps : 'AIzaSyAjfsVYLl5-ub-xmXPRNQUmKt3nMOKZ1Pk',
   debugMode: false
 };

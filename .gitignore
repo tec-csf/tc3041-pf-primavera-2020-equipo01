@@ -1,7 +1,8 @@
 backend/node_modules/
+api/node_modules/
 frontend/node_modules/
 frontend/dist/*
 microservices/auth/node_modules
 microservices/csv/node_modules
-microservices/micro/node_modules
+microservices/news/node_modules
 
