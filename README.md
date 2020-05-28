@@ -158,6 +158,8 @@ El backend esta compuesto de los microservicios y APIs expuestas en el diagrama 
 
 En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas o de Redis mediante las HTTP requests de las APIs y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
+Cada microservicio está almacenado en un [Docker](https://www.docker.com/) container dentro de [GCP](https://cloud.google.com/) y son orquestrados por [Kubernetes](https://kubernetes.io/).
+
 #### 3.5.1 Lenguaje de programación
 Los lenguajes de programación utilizados para el desarrollo del backend fueron: JavaScript.
 #### 3.5.2 Framework
@@ -184,8 +186,7 @@ Los lenguajes de programación utilizados para el desarrollo e integración de l
 #### 3.6.2 Framework
 En vista de que las APIs son usadas por los microservicios, el framework es el mismo: Node-Js Express. 
 #### 3.6.3 Librerías de funciones o dependencias
-
-*[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
+Las librerías y dependencias requeridas son las mismas que para el desarrollo del backend.
 
 *[Por cada endpoint debe incluir lo siguiente:]*
 
