@@ -137,7 +137,7 @@ El front también ofrece unos modulos de operaciones de visualización básicas 
 * La función de visualizar las tablas de casos, negocios y localidades.
 * Cargar múltiples casos a la vez con la función de CSV.
 * La función de escanear el código QR fue desarrollado con Angular y opera conjuntamente con los demás componentes del Front.
-* La función de ver gráfica con datos reales de la tasa de infección en México con la api [covid][(https://covid19api.com/).
+* La función de ver gráfica con datos reales de la tasa de infección en México con la api [covid](https://covid19api.com/).
 * La función de visualizar el mapa de coordenadas de los casos por Covid-19 (experimental, son ficticias).
 
 #### 3.4.1 Lenguaje de programación
@@ -232,13 +232,13 @@ El framework utilizado fue [Node-js Express](https://expressjs.com/)
 
 `npm install`
 
-4. Iniciar la app del backend de la API Rest
+4. Iniciar la app de la API Rest
 
 `npm start`
 
 5. Abrir otra terminal y cambiarse a la carpeta del microservicios/auth
 
-6. Cambiarse a la carpeta del backend del proyecto
+6. Cambiarse a la carpeta del microservicios/auth
 
 `cd tc3041-pf-primavera-2020-equipo01/microservices/auth`
 
@@ -246,7 +246,7 @@ El framework utilizado fue [Node-js Express](https://expressjs.com/)
 
 `npm install`
 
-8. Iniciarel microservicio auth en Redis
+8. Iniciar el microservicio auth en Redis
 
 `npm start`
 
@@ -268,7 +268,7 @@ El framework utilizado fue [Node-js Express](https://expressjs.com/)
 
 `cd tc3041-pf-primavera-2020-equipo01/frontend`
 
-14. Instalar las dependencias de NodeJs para el frontend
+14. Instalar las dependencias de NodeJs y Angular para el frontend
 
 `npm install`
 
@@ -288,15 +288,11 @@ http://localhost:4200
 
 https://console.cloud.google.com
 
-2. Crea un proyecto en el cual se desplegará la aplicación
+1. Crea un proyecto en el cual se desplegará la aplicación
 
-3. Abre la terminal de GCP
+2. Abre la terminal de GCP
 
-4. Clona el repositorio de Gitub
-
-`git clone https://github.com/tec-csf/tc3041-pf-primavera-2020-equipo01`
-
-5. Dentro de la plataforma entra a Compute/Kubernetes Engine y crea un nuevo cluster
+3. Dentro de la plataforma entra a Compute/Kubernetes Engine y crea un nuevo cluster
 
 #### En tu computadora (API)
 
@@ -315,7 +311,6 @@ https://console.cloud.google.com
 4. Dar push a la imagen de la api usando el comando
 
 `gcloud docker -- push gcr.io/[ID del proyecto de GCP]/api`
-
 
 5. Crea la conexión con el cluster creado previamente
 
