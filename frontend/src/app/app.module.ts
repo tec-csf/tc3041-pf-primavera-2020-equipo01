@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 import { NgQRCodeReaderModule } from 'ng2-qrcode-reader';  
 import { QRCodeModule } from "angularx-qrcode";
 import { QrComponent } from './qr/qr.component';
+
 export function jwtTokenGetter() {
   return localStorage.getItem('id_token');
 }
