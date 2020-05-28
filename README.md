@@ -127,13 +127,18 @@ El modelo siguiente muestra las interacciones de los dos microservicios expuesto
 
 ### 3.4 Frontend
 
-El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular. Como tal, también estará corriendo en el puerto 4200. La gran diferencia entre el frontend pasado y este, es que está conectado a más cosas (como se pudo ver en el diagrama global de la arquitectura de la solución).
+El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular.
 
 El front también ofrece unos modulos de operaciones de visualización básicas para el usuario:
+* Ver datos reales a nivel global con la api (covid) [https://covid19api.com/].
+* Registrarse a la aplicación [https://covid19api.com/].
+* Ingresar a la aplicación [https://covid19api.com/].
+* Operaciónes CRUD en casos,  negocios y localidades. [https://covid19api.com/].
+* La función de visualizar las tablas de casos, negocios y localidades.
+* Cargar múltiples casos a la vez con la función de CSV.
 * La función de escanear el código QR fue desarrollado con Angular y opera conjuntamente con los demás componentes del Front.
+* La función de ver gráfica con datos reales de la tasa de infección en México con la api (covid) [https://covid19api.com/].
 * La función de visualizar el mapa de coordenadas de los casos por Covid-19 (experimental, son ficticias).
-
-También integramos un API externa dentro del front para desplegar gráficas fidedignas de las cifras del Covid-19.
 
 #### 3.4.1 Lenguaje de programación
 
@@ -147,18 +152,17 @@ El framework utilizado para el desarrollo del frontend fue: [Angular](https://an
 
 Para el diseño de las pantallas botones y assets de la aplicación se utilizó [Bootstrap](https://getbootstrap.com) con sus modificaciones necesarias para una mejor visualización y UI.
 
-Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer peticiones http y procesarlas para que puedas ocupar la información que necesites de las bases de datos que procesa el backend y los microservicios.
+Aparte de Bootstrap, se utilizó HTTP module. Es un dependencia que te permite hacer peticiones http y procesarlas para que puedas ocupar la información que necesites de las bases de datos que procesa el backend y los microservicios.
 
 ### 3.5 Backend
 
 El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
+* La API principal para hacer operaciónes CRUD sobre nuestra base de datos en mongo (Puerto 8081)
 * Microservicio de autenticación en Node para autenticar credenciales de usuario (Puerto 3000).
 * Microservicio de carga de archivos en Node para subir archivos tipo csv al sistema (Puerto 3001).
 * Microservicio de noticias en Node, para desplegar noticias relacionadas con el Covid-19 (Puerto 3002).
 
-En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas o de Redis mediante las HTTP requests de las APIs y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
-
-Cada microservicio está almacenado en un [Docker](https://www.docker.com/) container dentro de [GCP](https://cloud.google.com/) y son orquestrados por [Kubernetes](https://kubernetes.io/).
+Cada microservicio y la API están almacenados en un [Docker](https://www.docker.com/) container dentro de [GCP](https://cloud.google.com/) y son orquestrados por [Kubernetes](https://kubernetes.io/).
 
 #### 3.5.1 Lenguaje de programación
 Los lenguajes de programación utilizados para el desarrollo del backend fueron: JavaScript.
@@ -176,27 +180,27 @@ Se instalan los modulos utilizando el package manager en el folder de node local
 Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/).
 
 ### 3.6 API
-* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 8081).
-* API RESTful en Node que se conecta al cluster de Redis-Labs para realizar todas las operaciones CRUD (Puerto ).
-* API externa para consultar las cifras oficiales de casos por coronavirus que regresa en datos tipo JSON. Se puede consultar a detalle esta API [aqui](https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#cc76052f-6601-4645-80e5-ca7aaa36f8ef).
-* API externa para consultar noticias oficiales relacionadas con el Covid-19.
+API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 8081).
 
 #### 3.6.1 Lenguaje de programación
-Los lenguajes de programación utilizados para el desarrollo e integración de las APIS fueron: JavaScript, YAML
+Los lenguajes de programación utilizados para el desarrollo e integración de las APIS fueron: JavaScript
 #### 3.6.2 Framework
-En vista de que las APIs son usadas por los microservicios, el framework es el mismo: Node-Js Express. 
+El framework utilizado fue [Node-js Express](https://expressjs.com/) 
+
 #### 3.6.3 Librerías de funciones o dependencias
-Las librerías y dependencias requeridas son las mismas que para el desarrollo del backend.
+- [Mongoose](https://mongoosejs.com/) para conectarse a MongoDB.
+- [body-parser](https://expressjs.com/en/resources/middleware/body-parser.html)
+-  [cors](https://www.npmjs.com/package/cors)
 
-*[Por cada endpoint debe incluir lo siguiente:]*
+####  3.6.4 Endpoints
+##### Cases
 
-* **Descripción**:
-* **URL**:
-* **Verbos HTTP**:
-* **Headers**:
-* **Formato JSON del cuerpo de la solicitud**: 
-* **Formato JSON de la respuesta**:
-* **Códigos de error**:
+* Obtiene todos los casos en la base de datos:
+* cases/getALL:
+* GET:
+* Sin Solicitud: 
+* Se regresa un JSON con los primeros 100 elementos de la colección:
+* 500:
 
 
 ## 3.6 Pasos a seguir para utilizar el proyecto
