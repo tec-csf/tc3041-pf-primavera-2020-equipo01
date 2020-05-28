@@ -153,15 +153,19 @@ El backend esta compuesto de los microservicios y APIs expuestas en el diagrama 
 En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas, de Redis o a la API externa y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
-Los lenguajes de programación utilizados para el desarrollo del frontend fueron: JavaScript
+Los lenguajes de programación utilizados para el desarrollo del backend fueron: JavaScript
 #### 3.5.2 Framework
 El framework utilizado fue [Node-js Express](https://expressjs.com/) para agilizar el desarrollo web de Node.
+
 ` npm install express --save`
+
 #### 3.5.3 Librerías de funciones o dependencias
 Las dependencias utilizadas son los modulos que Node precisa para su integración en el desarrollo. 
 Se instalan los modulos utilizando el package manager en el folder de node local.
+
 ` npm install`
-Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/)
+
+Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/).
 ### 3.6 API
 * API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
 *[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
