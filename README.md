@@ -146,10 +146,15 @@ Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer pe
 ### 3.5 Backend
 
 El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
-* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD.
-El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 3000, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
+* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
+* Microservicio de autenticación en Node para autenticar credenciales de usuario (Puerto 3000).
+* Microservicio de carga de archivos en Node para subir archivos tipo csv al sistema (Puerto 3001).
+* Microservicio de geolocalización en Node para ubicar coordenadas de de los registros en la base de datos (Puerto 3002).
+
+En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas, de Redis o a la API externa y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
+Los lenguajes de programación utilizados para el desarrollo del frontend fueron: JavaScript
 #### 3.5.2 Framework
 #### 3.5.3 Librerías de funciones o dependencias
 
