@@ -55,7 +55,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-Nuestro proyecto consiste en el desarrollo de una aplicación web para cargar datos, monitorear, analizar y registrar casos de la enfermedad por Coronavirus-2019. 
+Nuestro proyecto consiste en el desarrollo de una aplicación web para cargar datos, monitorear, analizar y registrar casos de COVID-19. 
 
 ## 3. Solución
 
@@ -90,7 +90,7 @@ Utilizamos Redis por el manejo nativo de expiración de los registros, al ser au
    
 ### 3.2 Descripción de los datasets
 
-El dataset fue producido en una aplicación de generación de datos JSON con el propósito de almacenar una cantidad realista de gente probada por coronavirus (aproximadamente diez millones de casos). 
+El dataset fue producido en una aplicación de generación de datos JSON con el propósito de almacenar una cantidad realista de gente probada por COVID-19 (aproximadamente diez millones de casos). 
 
 Los campos del dataset son los siguientes:
 * Nombre
@@ -127,24 +127,43 @@ El modelo siguiente muestra las interacciones de los dos microservicios expuesto
 
 ### 3.4 Frontend
 
-*[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular. Como tal, también estará corriendo en el puerto 4200. La gran diferencia entre el frontend pasado y este, es que está conectado a más cosas (como se pudo ver en el diagrama global de la arquitectura de la solución).
 
 #### 3.4.1 Lenguaje de programación
+
+Los lenguajes de programación utilizados para el desarrollo del frontend fueron: HTML, SCSS y TypeScript.
+
 #### 3.4.2 Framework
+
+El framework utilizado para el desarrollo del frontend fue: [Angular](https://angular.io). Es un framework de código abierto para el desarrollo de aplicaciones web de una sola página desarrollado por Google. 
+
 #### 3.4.3 Librerías de funciones o dependencias
+
+Para el diseño de las pantallas botones y assets de la aplicación se utilizó [Bootstrap](https://getbootstrap.com) con sus modificaciones necesarias para una mejor visualización y UI.
+
+Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer peticiones http y procesarlas para que puedas ocupar la información que necesites de las bases de datos que procesa el backend y los microservicios.
 
 ### 3.5 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
+* Microservicio de autenticación en Node para autenticar credenciales de usuario (Puerto 3000).
+* Microservicio de carga de archivos en Node para subir archivos tipo csv al sistema (Puerto 3001).
+* Microservicio de geolocalización en Node para ubicar coordenadas de de los registros en la base de datos (Puerto 3002).
 
-El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 3000, al recibir las solicitudes a su IP  ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
+En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas, de Redis o a la API externa y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
+Los lenguajes de programación utilizados para el desarrollo del frontend fueron: JavaScript
 #### 3.5.2 Framework
+El framework utilizado fue [Node-js Express](https://expressjs.com/) para agilizar el desarrollo web de Node.
+` npm install express --save`
 #### 3.5.3 Librerías de funciones o dependencias
-
+Las dependencias utilizadas son los modulos que Node precisa para su integración en el desarrollo. 
+Se instalan los modulos utilizando el package manager en el folder de node local.
+` npm install`
+Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/)
 ### 3.6 API
-
+* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
 *[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.6.1 Lenguaje de programación
