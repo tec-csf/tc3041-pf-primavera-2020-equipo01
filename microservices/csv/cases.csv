@@ -1,2 +1,3 @@
 _id,name,last_name,age,gender,isConfirmed,location,lat,lng,recentlyVisited,closestFriends
-18289292,Juan,Perez,63,male,TRUE,63598,-174.09,30.426,76537,15361
+182892921,Juan,Perez,63,male,TRUE,63598,-174.09,30.426,76537,15361
+1828929212,Jose,Perez,63,male,TRUE,63598,-174.09,30.426,76537,15361
