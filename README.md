@@ -127,7 +127,7 @@ El modelo siguiente muestra las interacciones de los dos microservicios expuesto
 
 ### 3.4 Frontend
 
-El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular. Como tal, también estará corriendo en el puerto 4200. la gran diferencia entre el frontend pasado y este, es que está conectado a más cosas (como se pudo ver en el diagrama global de la arquitectura de la solución).
+El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular. Como tal, también estará corriendo en el puerto 4200. La gran diferencia entre el frontend pasado y este, es que está conectado a más cosas (como se pudo ver en el diagrama global de la arquitectura de la solución).
 
 #### 3.4.1 Lenguaje de programación
 
