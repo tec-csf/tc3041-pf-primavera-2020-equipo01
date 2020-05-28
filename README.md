@@ -145,8 +145,8 @@ Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer pe
 
 ### 3.5 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
+El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
+* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD.
 El backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde el puerto 3000, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
