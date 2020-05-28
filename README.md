@@ -121,13 +121,19 @@ La base de datos de Redis está configurada como la arquitectura default de alta
 
 #### Diagrama global
 
-El modelo siguiente muestra las interacciones de los dos microservicios expuestos anteriormente integrados con el microservicio de carga de csvs, el microservicio de QR Code y el API externo para consultar las cifras oficiales de Covid-19.
+El modelo siguiente muestra las interacciones de los dos microservicios expuestos anteriormente integrados con el microservicio de carga de csvs, el microservicio front de QR Code y el API externo para consultar las cifras oficiales de Covid-19.
 
 ![Arquitectura global](assets/MainDiagram.png)
 
 ### 3.4 Frontend
 
 El frontend para este proyecto está directamente basado del frontend que se creó para la Tarea 3 de esta materia. Entonces, este frontend también fue diseñado en Angular. Como tal, también estará corriendo en el puerto 4200. La gran diferencia entre el frontend pasado y este, es que está conectado a más cosas (como se pudo ver en el diagrama global de la arquitectura de la solución).
+
+El front también ofrece unos modulos de operaciones de visualización básicas para el usuario:
+* La función de escanear el código QR fue desarrollado con Angular y opera conjuntamente con los demás componentes del Front.
+* La función de visualizar el mapa de coordenadas de los casos por Covid-19 (experimental, son ficticias).
+
+También integramos un API externa dentro del front para desplegar gráficas fidedignas de las cifras del Covid-19.
 
 #### 3.4.1 Lenguaje de programación
 
@@ -148,12 +154,12 @@ Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer pe
 El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
 * Microservicio de autenticación en Node para autenticar credenciales de usuario (Puerto 3000).
 * Microservicio de carga de archivos en Node para subir archivos tipo csv al sistema (Puerto 3001).
-* Microservicio de geolocalización en Node para ubicar coordenadas de de los registros en la base de datos (Puerto 3002).
+* Microservicio de noticias en Node, para desplegar noticias relacionadas con el Covid-19 (Puerto 3002).
 
-En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas, de Redis o a la API externa y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
+En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirve el contenido desde su puerto específico, al recibir las solicitudes a su IP ngix redirige el trafico al backend, este se conecta con el cluster de MongoAtlas o de Redis mediante las HTTP requests de las APIs y llama al frontend como contenido estático el cual esta almacenádo en un contenedor en Docker en GCP.
 
 #### 3.5.1 Lenguaje de programación
-Los lenguajes de programación utilizados para el desarrollo del backend fueron: JavaScript
+Los lenguajes de programación utilizados para el desarrollo del backend fueron: JavaScript.
 #### 3.5.2 Framework
 El framework utilizado fue [Node-js Express](https://expressjs.com/) para agilizar el desarrollo web de Node.
 
@@ -166,12 +172,17 @@ Se instalan los modulos utilizando el package manager en el folder de node local
 ` npm install`
 
 Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/).
+
 ### 3.6 API
-* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 8081).
+* API RESTful en Node que se conecta al cluster de Redis-Labs para realizar todas las operaciones CRUD (Puerto ).
+* API externa para consultar las cifras oficiales de casos por coronavirus que regresa en datos tipo JSON. Se puede consultar a detalle esta API [aqui](https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#cc76052f-6601-4645-80e5-ca7aaa36f8ef).
+* API externa para consultar noticias oficiales relacionadas con el Covid-19.
 
 #### 3.6.1 Lenguaje de programación
+Los lenguajes de programación utilizados para el desarrollo e integración de las APIS fueron: JavaScript, YAML
 #### 3.6.2 Framework
+En vista de que las APIs son usadas por los microservicios, el framework es el mismo: Node-Js Express. 
 #### 3.6.3 Librerías de funciones o dependencias
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
