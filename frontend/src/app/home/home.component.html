@@ -13,6 +13,23 @@
     <h1 class="jumbotron-heading">Covid-19 Latest News</h1>
 
     <h4>World News</h4>
+    <div class="col-md-4 col-lg-3 my-3 d-flex align-items-stretch" *ngFor="let item of news">
+      <div class="card">
+          <img [src]="item.urlToImage" alt="" class="card-img-top img-fluid img-thumbnail">
+          <div class="card-body">
+              <div class="card-title text-capitalize">
+                  <h5>{{item.title}}</h5>
+              </div>
+              <p class="card-text">
+                  {{item.author}}
+              </p>
+              <div class="d-flex justify-content-left mt-3">
+                  <p class="badge badge-secondary mr-3">{{item.publishedAt | date}}</p>
+                  <p class="badge badge-secondary mr-3"><a [href]="item.url"> Read More </a></p>
+              </div>
 
+          </div>
+      </div>
+  </div>
   </div>
 </section>
