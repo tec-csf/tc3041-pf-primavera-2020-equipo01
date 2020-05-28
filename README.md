@@ -146,7 +146,6 @@ Aparte de Bootstrap, se utilizó RXJS. Es un dependencia que te permite hacer pe
 ### 3.5 Backend
 
 El backend esta compuesto de los microservicios y APIs expuestas en el diagrama global, estos son:
-* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
 * Microservicio de autenticación en Node para autenticar credenciales de usuario (Puerto 3000).
 * Microservicio de carga de archivos en Node para subir archivos tipo csv al sistema (Puerto 3001).
 * Microservicio de geolocalización en Node para ubicar coordenadas de de los registros en la base de datos (Puerto 3002).
@@ -156,10 +155,15 @@ En cada caso el backend esta ejecutandose en una VM dentro de AppEngine que sirv
 #### 3.5.1 Lenguaje de programación
 Los lenguajes de programación utilizados para el desarrollo del frontend fueron: JavaScript
 #### 3.5.2 Framework
+El framework utilizado fue [Node-js Express](https://expressjs.com/) para agilizar el desarrollo web de Node.
+` npm install express --save`
 #### 3.5.3 Librerías de funciones o dependencias
-
+Las dependencias utilizadas son los modulos que Node precisa para su integración en el desarrollo. 
+Se instalan los modulos utilizando el package manager en el folder de node local.
+` npm install`
+Se puede ver a detalle las dependencias de node [aqui](https://nodejs.org/en/docs/meta/topics/dependencies/)
 ### 3.6 API
-
+* API RESTful en Node que se conecta al cluster de Mongo Atlas para realizar todas las operaciones CRUD (Puerto 3002).
 *[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 #### 3.6.1 Lenguaje de programación
