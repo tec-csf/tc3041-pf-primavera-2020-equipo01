@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';  
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-qr',
@@ -18,16 +20,18 @@ export class QrComponent implements OnInit {
   showQRCode: boolean = false;  
 
   loading = true;
+  json:String;
+  resultMessage:String;
+  qrdataLong:String;
+  qrNum: number;
 
-
-  constructor(private renderer: Renderer2) {
-    this.qrdata = "Initial QR code data string";
+  constructor(private renderer: Renderer2, private http: HttpClient) {
+    this.qrdata = "http://35.223.162.94/cases/edit/" + "0";
     this.elementType = "img";
     this.scale = 4;
   }
 
   ngOnInit() {
-
   }
 
   preview(files) {  // QR Reader
@@ -35,6 +39,7 @@ export class QrComponent implements OnInit {
       return;  
     var mimeType = files[0].type;  
     if (mimeType.match(/image\/*/) == null) {  
+      console.log("Only images are supported.");
       alert("Only images are supported.");  
       return;  
     }  
@@ -44,12 +49,14 @@ export class QrComponent implements OnInit {
       this.value = reader.result;  
       console.log(reader.result);  
       this.showQRCode = true;  
-    }  
+    }
   }  
 
   render(e) {  // QR Reader
     let element: Element = this.renderer.createElement('h1');  
-    element.innerHTML = e.result;  
+    element.innerHTML = e.result; 
+    this.qrNum = e.result;
+    console.log(e.result); // qr result
     this.renderElement(element);  
   }  
 
@@ -61,6 +68,6 @@ export class QrComponent implements OnInit {
   }  
 
   changeValue(newValue: string): void {// QR Gen
-    this.qrdata = newValue;
+    this.qrdata = "http://35.223.162.94/cases/edit/" + newValue;
   }
 }

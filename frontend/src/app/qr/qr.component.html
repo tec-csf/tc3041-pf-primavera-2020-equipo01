@@ -13,13 +13,9 @@
         
         <div class="text">
           <label>
-            Type to change: <input [(ngModel)]="qrdata" placeholder="name" />
+            Type id to be generated: <input [(ngModel)]="qrdata" placeholder="0" />
           </label>
-          <br />
-          <button (click)="changeValue('Bruce')">Change Value to Bruce</button>
-          <button (click)="changeValue('42')">Change Value to 42</button>
         </div>
-        
     </div>
     
     <div class="p-6">  
@@ -28,5 +24,6 @@
         <ng2-qrcode-reader (result)="render($event)" [qrr-show]="showQRCode" [qrr-value]="value" [qrr-type]="elementType">  
         </ng2-qrcode-reader><br>  
         <div #result></div>  
+        <h4>{{resultMessage}}</h4>  
     </div>
 </div>
