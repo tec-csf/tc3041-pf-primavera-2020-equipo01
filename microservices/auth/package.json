@@ -13,7 +13,7 @@
     "braces": "^3.0.2",
     "cors": "*",
     "express": "*",
-    "express-handlebars": "^3.0.2",
+    "express-handlebars": "^5.3.1",
     "jsonwebtoken": "*",
     "passport": "*",
     "passport-jwt": "*",
